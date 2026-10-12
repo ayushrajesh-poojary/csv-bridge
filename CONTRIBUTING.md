@@ -13,7 +13,7 @@ Thank you for your interest in contributing to **CSV Bridge**! As an open-source
 
 ### 2. Fork and Clone
 ```bash
-git clone https://github.com/ayushgujran-stack/csv-bridge.git
+git clone https://github.com/ayushrajesh-poojary/csv-bridge.git
 cd csv-bridge
 ```
 

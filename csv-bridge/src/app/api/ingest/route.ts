@@ -31,21 +31,7 @@ export async function POST(request: Request) {
 
     const supabaseAdmin = createClient(supabaseUrl, serviceRoleKey)
 
-    // -------------------------------------------------------
-    // Step 2: Extract the user's custom widget key from the
-    // Authorization header (e.g. "Bearer csvb_sk_abc123...")
-    // -------------------------------------------------------
-    const authHeader = request.headers.get('authorization')
-    const userApiKey = authHeader?.replace('Bearer ', '').trim()
-
-    if (!userApiKey) {
-      return NextResponse.json(
-        { error: 'Missing API key in Authorization header' },
-        { status: 401, headers: corsHeaders }
-      )
-    }
-
-    // Parse the request body
+    // Parse the request body first
     const body = await request.json()
     const { data, webhookUrl: payloadWebhookUrl } = body
 
@@ -58,8 +44,22 @@ export async function POST(request: Request) {
 
     let webhookUrl = payloadWebhookUrl
 
-    // If no webhook URL is provided in the payload, look it up in the database
+    // -------------------------------------------------------
+    // Step 2: If no webhookUrl is in the payload, we must
+    // look it up in Supabase using the user's API key.
+    // If a webhookUrl IS provided directly, skip auth check.
+    // -------------------------------------------------------
     if (!webhookUrl) {
+      const authHeader = request.headers.get('authorization')
+      const userApiKey = authHeader?.replace('Bearer ', '').trim()
+
+      if (!userApiKey) {
+        return NextResponse.json(
+          { error: 'Missing API key in Authorization header. Provide an apiKey prop or a webhookUrl.' },
+          { status: 401, headers: corsHeaders }
+        )
+      }
+
       const { data: settings, error } = await supabaseAdmin
         .from('user_settings')
         .select('webhook_url')
@@ -78,7 +78,7 @@ export async function POST(request: Request) {
 
     if (!webhookUrl) {
       return NextResponse.json(
-        { error: 'No webhook URL configured or provided' },
+        { error: 'No webhook URL configured. Set one in the dashboard or pass webhookUrl as a prop.' },
         { status: 400, headers: corsHeaders }
       )
     }

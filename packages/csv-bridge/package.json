@@ -33,11 +33,11 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ayushgujran-stack/csv-bridge.git"
+    "url": "git+https://github.com/ayushrajesh-poojary/csv-bridge.git"
   },
-  "homepage": "https://github.com/ayushgujran-stack/csv-bridge#readme",
+  "homepage": "https://github.com/ayushrajesh-poojary/csv-bridge#readme",
   "bugs": {
-    "url": "https://github.com/ayushgujran-stack/csv-bridge/issues"
+    "url": "https://github.com/ayushrajesh-poojary/csv-bridge/issues"
   },
   "peerDependencies": {
     "react": ">=18.0.0",

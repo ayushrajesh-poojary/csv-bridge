@@ -129,7 +129,7 @@ csv-bridge/
 Clone the repository and install all dependencies from the root:
 
 ```bash
-git clone https://github.com/ayushgujran-stack/csv-bridge.git
+git clone https://github.com/ayushrajesh-poojary/csv-bridge.git
 cd csv-bridge
 npm install
 ```
@@ -154,7 +154,13 @@ npm run build
 
 ## 🗄️ Self-Hosting the Ingestion Backend
 
-If you want to host your own ingestion backend and API key dashboard:
+### ⚡ One-Click Deploy to Vercel
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/ayushrajesh-poojary/csv-bridge&root=csv-bridge&env=NEXT_PUBLIC_SUPABASE_URL,NEXT_PUBLIC_SUPABASE_ANON_KEY,SUPABASE_SERVICE_ROLE_KEY&envDescription=Supabase%20credentials%20for%20the%20CSV%20Bridge%20backend&envLink=https://supabase.com/docs/guides/getting-started)
+
+### Manual Setup
+
+If you prefer to deploy manually:
 
 1. Create a free project at [Supabase](https://supabase.com).
 2. Go to the **SQL Editor** in Supabase and run the script in [`supabase/schema.sql`](supabase/schema.sql).
@@ -168,7 +174,7 @@ If you want to host your own ingestion backend and API key dashboard:
    NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
    SUPABASE_SERVICE_ROLE_KEY=your-service-role-key
    ```
-5. Deploy to [Vercel](https://vercel.com) or any Node.js hosting platform with 1-click!
+5. Deploy to [Vercel](https://vercel.com) or any Node.js hosting platform.
 
 ---
 

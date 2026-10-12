@@ -439,7 +439,7 @@ export default function DashboardClient({ initialApiKey, initialWebhookUrl, user
                 Install the package, then drop the component into your page:
               </p>
               <pre className="overflow-x-auto rounded-lg border border-white/10 bg-zinc-900 p-4 text-xs leading-relaxed text-zinc-300">
-                <code>{`import { CSVBridge } from "@data-tools/csv-bridge"
+                <code>{`import { CSVBridge } from "csv-bridge"
 
 export default function MyPage() {
   return (
